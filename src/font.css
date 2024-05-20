@@ -1,0 +1,43 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@font-face {
+    font-family: 'KimjungchulMyungjo-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KimjungchulMyungjo-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Regular.woff2') format('woff2');
+    font-weight: 704000;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KimjungchulMyungjo-Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    color: #555;
+    background-color: #DFCDBC;
+}
+
+header h1 {
+    font-family: 'KimjungchulMyungjo-Bold';
+    color: black
+}
+
+header h2,
+header h3 {
+    font-family: 'KimjungchulMyungjo-Regular';
+    color: black;
+}
+
+header div.list > p {
+    font-family: 'KimjungchulMyungjo-Light';
+}

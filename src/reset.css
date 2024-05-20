@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+html,body,h1,h2,h3,h4,h5,h6,p,div,ul,ol,li,dt,dd,blockquote,address,header,nav,section,article,aside,main,footer,figure,figcaption,table,caption,thead,th,tr,td,tbody,tfoot,form,legend,fieldset {margin:0; padding:0;}
+
+ul li {list-style-type: none;}
+
+a {text-decoration: none; color: inherit;}
+
+em,i,address,cite {font-style: normal;}
+
+.blind {
+    font-size: 0;
+    line-height: 0;
+    height: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+/* float 해제 */
+.clear:before,
+.clear:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  background-color: transparent;
+  outline: 0;
+  border: none;
+}
+
+figure img {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+}

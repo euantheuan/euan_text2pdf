@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+div.loading {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: black;
+  height: 100%;
+}
+div.container {
+  padding: 20px 30px;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+header {
+  width: 350px;
+  border-right: 1px solid #585858;
+  min-height: 100%;
+  padding: 0 20px 0 0;
+  box-sizing: border-box;
+}
+header h1 {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+header h2 {
+  font-size: 17px;
+  display: inline-block;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+header div.title_area {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #58585858;
+}
+header div.list {
+  padding: 20px 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #58585858;
+  cursor: pointer;
+}
+header div.list > h3 {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header div.list > p {
+  font-size: 16px;
+  white-space: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
+}
+header div.list > span {
+  font-family: 'KimjungchulMyungjo-Light';
+  font-size: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+main {
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: calc(100% - 350px);
+  height: 100%;
+}
+main div.btn_area {
+  text-align: right;
+  font-size: 35px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+main div.btn_area button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+main div.btn_area button > img{
+  height: 35px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main div.text_area {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+main div.text_area input.text_title {
+  height: 30px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+main div.text_area textarea.text_desc {
+  height: calc(100% - 50px);
+  width: 100%;
+  font-size: 17px;
+  line-height: 1.7;
 }

@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './App.css'
+import Header from './components/Header';
+import Buttons from './components/Buttons';
+import TextForm from './components/TextForm';
+import EditTextForm from './components/EditTextForm';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [markuptext, setMarkuptext] = useState('');
+    const [markuptitle, setMarkuptitle] = useState('');
+    const [editMode, setEditMode] = useState(null);
+    const [userId, setUserId] = useState(null);
+    const [docId, setDocId] = useState(null)
+
+    return (
+        <div className='container'>
+            <Header />
+            <main>
+                <Buttons    markuptext={markuptext} 
+                            markuptitle={markuptitle}
+                            editMode={editMode}
+                            userId={userId}
+                            docId={docId} />
+                <Routes>
+                    <Route path='/new' element={
+                    <TextForm   setMarkuptext={setMarkuptext}
+                                setMarkuptitle={setMarkuptitle}
+                                setEditMode={setEditMode} />} />
+                    <Route path="/memos/:userId/:docId" element={
+                    <EditTextForm   markuptext={markuptext}
+                                    markuptitle={markuptitle}
+                                    setMarkuptext={setMarkuptext}
+                                    setMarkuptitle={setMarkuptitle}
+                                    setEditMode={setEditMode}
+                                    userId={userId}
+                                    docId={docId}
+                                    setDocId={setDocId}
+                                    setUserId={setUserId} />} />
+                </Routes>
+            </main>
+        </div>
+    );
+};
 
 export default App;
