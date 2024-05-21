@@ -1,6 +1,6 @@
 import { doc, addDoc, deleteDoc, collection, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useReducer } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { db } from '../firebase/config.js';
 
 // 1. state 초기화
@@ -36,18 +36,19 @@ const storeReducer = (state, action) => {
 export const useFirestore = () => {
     const [response, dispatch] = useReducer(storeReducer, initState);
     const { userId, docId } = useParams();
+    const navigate = useNavigate();
 
 
     const saveToFirebase = async (markuptext, markuptitle, user) => {
         try {
             const colRef = collection(db, 'users', user.uid, 'memos');
-            await addDoc(colRef, {
+            const docRef = await addDoc(colRef, {
                 title: markuptitle,
                 desc: markuptext,
                 createdAt: serverTimestamp(),
             });
             alert('저장되었습니다.');
-            console.log('Saved to Firebase successfully.');
+            navigate(`/memo/${user.uid}/${docRef.id}`)
         } catch (error) {
             console.error('Error saving to Firebase:', error);
         }
@@ -72,15 +73,19 @@ export const useFirestore = () => {
     };
 
     // collection에서 문서 삭제
-    const deleteDocument = async (id, user) => {
+    const deleteDocument = async () => {
         try {
             dispatch({ type: "isPending" });
-            const colRef = collection(db, 'users', user.uid, 'memos');
-            const docRef = doc(colRef, id);
-            await deleteDoc(docRef);
-            dispatch({ type: "deleteDoc", payload: docRef });
+            const colRef = collection(db, 'users', userId, 'memos');
+            const docRef = doc(colRef, docId);
+            if (window.confirm('삭제하시겠습니까?')) {
+                await deleteDoc(docRef);
+                navigate('/')
+                dispatch({ type: "deleteDoc", payload: docRef });
+            }
         } catch (e) {
             dispatch({ type: "error", payload: e.message });
+            console.log(e)
         }
     };
 

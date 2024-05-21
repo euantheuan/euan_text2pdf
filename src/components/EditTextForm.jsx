@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import Buttons from './Buttons';
 
-const EditTextForm = ({ setEditMode, setMarkuptitle, setMarkuptext, markuptext, markuptitle, setUserId, setDocId }) => {
+const EditTextForm = ({ editMode, setEditMode, setMarkuptitle, setMarkuptext, markuptext, markuptitle, setUserId, setDocId }) => {
     const { userId, docId } = useParams();
 
     useEffect(() => {
@@ -34,6 +35,12 @@ const EditTextForm = ({ setEditMode, setMarkuptitle, setMarkuptext, markuptext, 
     }, [setEditMode]);
 
     return (
+        <>
+        <Buttons    markuptext={markuptext} 
+                    markuptitle={markuptitle}
+                    editMode={editMode}
+                    userId={userId}
+                    docId={docId} />
         <div className="text_area">
             <input
                 type="text"
@@ -48,7 +55,7 @@ const EditTextForm = ({ setEditMode, setMarkuptitle, setMarkuptext, markuptext, 
                 placeholder="이곳에 마크다운 문법을 이용해 본문을 입력하세요."
                 className="text_desc"
             />
-        </div>
+        </div></>
     );
 };
 

@@ -5,11 +5,11 @@ import { useSignOut } from '../hooks/useSignOut.js';
 import { useExportToPDF } from '../hooks/useExportToPDF.js';
 import { useAuthContext } from '../hooks/useAuthContext.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf } from '@fortawesome/free-regular-svg-icons';
+import { faFilePdf, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faRightFromBracket, faFloppyDisk, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const Buttons = ({ markuptext, markuptitle, editMode, userId, docId }) => {
+const Buttons = ({ markuptext, markuptitle, editMode }) => {
     const navigate = useNavigate();
     const [btnUser, setBtnUser] = useState(false);
     const signIn = useSignIn();
@@ -17,6 +17,7 @@ const Buttons = ({ markuptext, markuptitle, editMode, userId, docId }) => {
     const exportToPDF = useExportToPDF(markuptext);
     const { saveToFirebase, deleteDocument, updateDocument } = useFirestore();
     const { user } = useAuthContext();
+    const { userId, docId } = useParams();
 
     useEffect(() => {
         if (user) {
@@ -48,16 +49,15 @@ const Buttons = ({ markuptext, markuptitle, editMode, userId, docId }) => {
         <div className='btn_area'>
             <button onClick={() => navigate('/new')}><FontAwesomeIcon icon={faPlus} /></button>
             <button onClick={handleExportToPDF}><FontAwesomeIcon icon={faFilePdf} /></button>
-            {btnUser ? (
-                <>
-                    <button onClick={handleSaveToFirebase}><FontAwesomeIcon icon={faFloppyDisk} /></button>
-                    <button onClick={handleSignOut}><FontAwesomeIcon icon={faRightFromBracket} /></button>
-                </>
-            ) : (
-                <button onClick={handleSignIn}>
-                    <img src={process.env.PUBLIC_URL + '/google_login.png'} alt="Sign in with Google" />
-                </button>
-            )}
+            {
+                btnUser && (
+                    <>
+                        <button onClick={handleSaveToFirebase}><FontAwesomeIcon icon={faFloppyDisk} /></button>
+                        <button onClick={deleteDocument}><FontAwesomeIcon icon={faTrashCan} /></button>
+                        <button onClick={handleSignOut}><FontAwesomeIcon icon={faRightFromBracket} /></button>
+                    </>
+                )
+            }
         </div>
     )
 }

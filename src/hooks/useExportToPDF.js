@@ -13,10 +13,10 @@ export const useExportToPDF = (markuptext) => {
         console.log(element);
 
         const options = {
-            margin: [30, 25, 25, 25],
+            margin: [30, 25, 30, 25],
             filename: 'document.pdf',
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
+            html2canvas: { scale: 1 },
             jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' },
         };
 

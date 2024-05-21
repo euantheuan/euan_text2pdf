@@ -17,6 +17,16 @@ div.container {
   justify-content: space-between;
   align-items: start;
 }
+div.login_area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.login_area img {
+  width: 250px;
+}
 header {
   width: 350px;
   border-right: 1px solid #585858;
@@ -75,7 +85,7 @@ main {
 }
 main div.btn_area {
   text-align: right;
-  font-size: 35px;
+  font-size: 30px;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -84,10 +94,6 @@ main div.btn_area button {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-main div.btn_area button > img{
-  height: 35px;
-}
-
 main div.text_area {
   width: 80%;
   height: 100%;
@@ -98,10 +104,63 @@ main div.text_area input.text_title {
   width: 100%;
   margin-bottom: 20px;
   font-size: 25px;
+  font-weight: 600;
 }
 main div.text_area textarea.text_desc {
   height: calc(100% - 50px);
   width: 100%;
   font-size: 17px;
   line-height: 1.7;
+}
+
+/* 내보내기 서식 */
+div.html_content {
+  color: black;
+  line-height: 1.6;
+}
+div.html_content h1 {
+  margin-bottom: 10px;
+}
+div.html_content h2,
+div.html_content h3,
+div.html_content h4,
+div.html_content h5,
+div.html_content h6 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+div.html_content p {
+  margin-bottom: 10px;
+}
+div.html_content ol li {
+  list-style: decimal;
+}
+div.html_content ol,
+div.html_content ul {
+  margin-left: 35px;
+}
+div.html_content hr {
+  color: #ccc;
+  margin: 50px 0;
+}
+div.html_content code {
+  display: block;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  font-family: 'D2Coding';
+}
+div.html_content strong {
+  font-weight: 600;
+}
+div.html_content em {
+  font-style: italic;
+  font-weight: 500;
+}
+div.html_content del {
+  color: #ccc
+}
+div.html_content blockquote {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  font-style: italic;
 }

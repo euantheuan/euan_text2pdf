@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { auth, db } from '../firebase/config';
 import { useAuthContext } from '../hooks/useAuthContext.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { useFirestore } from '../hooks/useFirestore.js';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -67,18 +70,18 @@ const Header = () => {
                         onClick={() => navigate(`/memos/${user.uid}/${memo.id}`)} >
                     <h3> {memo.title} </h3>
                     <p>{memo.desc}</p>
-                    <span>
-                            {memo.createdAt && memo.createdAt.toDate
-                            ? new Intl.DateTimeFormat('ko-KR', {
-                                year: 'numeric',
-                                month: '2-digit',
-                                day: '2-digit',
-                                hour: '2-digit',
-                                minute: '2-digit',
-                                hour12: false,
-                            }).format(memo.createdAt.toDate())
-                            : ''}
-                        </span>
+                        <span>
+                                {memo.createdAt && memo.createdAt.toDate
+                                ? new Intl.DateTimeFormat('ko-KR', {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    hour12: false,
+                                }).format(memo.createdAt.toDate())
+                                : ''}
+                            </span>
                 </div>
             ))}
             </div>
