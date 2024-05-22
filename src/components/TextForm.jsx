@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Buttons from './Buttons';
 
-const TextForm = ({ markuptext, markuptitle, editMode, userId, docId, setMarkuptext, setMarkuptitle, setEditMode }) => {
+const TextForm = ({ markuptext, markuptitle, editMode, setMarkuptext, setMarkuptitle, setEditMode }) => {
+    
+    const { userId, docId } = useParams();
+
     useEffect(() => {
         setEditMode(false);
     }, [setEditMode]);
+
     return (
         <>
         <Buttons    markuptext={markuptext} 

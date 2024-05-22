@@ -64,26 +64,29 @@ const Header = () => {
                 }
             </div>
             <div className='list_area'>
-            {memos.map((memo, idx) => (
-                <div    className='list'
-                        key={idx}
-                        onClick={() => navigate(`/memos/${user.uid}/${memo.id}`)} >
-                    <h3> {memo.title} </h3>
-                    <p>{memo.desc}</p>
-                        <span>
-                                {memo.createdAt && memo.createdAt.toDate
-                                ? new Intl.DateTimeFormat('ko-KR', {
-                                    year: 'numeric',
-                                    month: '2-digit',
-                                    day: '2-digit',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                    hour12: false,
-                                }).format(memo.createdAt.toDate())
-                                : ''}
-                            </span>
-                </div>
-            ))}
+            {
+                user &&
+                    memos.map((memo, idx) => (
+                        <div    className='list'
+                                key={idx}
+                                onClick={() => navigate(`/memos/${user.uid}/${memo.id}`)} >
+                            <h3> {memo.title} </h3>
+                            <p>{memo.desc}</p>
+                                <span>
+                                        {memo.createdAt && memo.createdAt.toDate
+                                        ? new Intl.DateTimeFormat('ko-KR', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            hour12: false,
+                                        }).format(memo.createdAt.toDate())
+                                        : ''}
+                                    </span>
+                        </div>
+                    ))
+            }
             </div>
         </header>
     );

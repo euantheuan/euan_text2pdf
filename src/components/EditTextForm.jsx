@@ -4,12 +4,10 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import Buttons from './Buttons';
 
-const EditTextForm = ({ editMode, setEditMode, setMarkuptitle, setMarkuptext, markuptext, markuptitle, setUserId, setDocId }) => {
+const EditTextForm = ({ editMode, setEditMode, setMarkuptitle, setMarkuptext, markuptext, markuptitle }) => {
     const { userId, docId } = useParams();
 
     useEffect(() => {
-        setUserId(userId);
-        setDocId(docId);
         const fetchMemoDetails = async () => {
             try {
                 const memoRef = doc(db, 'users', userId, 'memos', docId);
@@ -38,9 +36,7 @@ const EditTextForm = ({ editMode, setEditMode, setMarkuptitle, setMarkuptext, ma
         <>
         <Buttons    markuptext={markuptext} 
                     markuptitle={markuptitle}
-                    editMode={editMode}
-                    userId={userId}
-                    docId={docId} />
+                    editMode={editMode} />
         <div className="text_area">
             <input
                 type="text"
