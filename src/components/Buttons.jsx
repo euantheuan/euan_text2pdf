@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFirestore } from '../hooks/useFirestore.js';
-import { useSignIn } from '../hooks/useSignIn.js';
 import { useSignOut } from '../hooks/useSignOut.js';
 import { useExportToPDF } from '../hooks/useExportToPDF.js';
 import { useAuthContext } from '../hooks/useAuthContext.js';
@@ -16,7 +15,6 @@ const Buttons = ({ markuptext, markuptitle, editMode }) => {
     const exportToPDF = useExportToPDF(markuptext);
     const { saveToFirebase, deleteDocument, updateDocument } = useFirestore();
     const { user } = useAuthContext();
-    const { userId, docId } = useParams();
 
     useEffect(() => {
         if (user) {

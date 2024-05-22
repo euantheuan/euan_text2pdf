@@ -1,6 +1,5 @@
 import { auth, provider } from '../firebase/config.js';
 import { signInWithPopup } from 'firebase/auth';
-import { useAuthContext } from './useAuthContext.js';
 
 export const useSignIn = () => {
 
@@ -8,7 +7,7 @@ export const useSignIn = () => {
         return signInWithPopup(auth, provider)
             .then((result) => {
                 const user = result.user;
-                console.log('로그인되었습니다', user)
+                console.log('로그인되었습니다.')
                 if (!user) {
                     throw new Error('로그인에 실패했습니다.');
                 }
